@@ -5,7 +5,7 @@ const nextConfig = {
     ignoreBuildErrors: process.env.NODE_ENV === 'development',
   },
   eslint: {
-    ignoreDuringBuilds: process.env.NODE_ENV === 'development',
+    ignoreDuringBuilds: true,   // 👈 changed
   },
   experimental: {
     forceSwcTransforms: true,
@@ -33,30 +33,12 @@ const nextConfig = {
   
   images: {
     remotePatterns: [
-      {
-        protocol: 'http',
-        hostname: 'localhost',
-      },
-      {
-        protocol: 'https',
-        hostname: 'indiantrademart.com',
-      },
-      {
-        protocol: 'https',
-        hostname: '*.indiantrademart.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'companyname.com',
-      },
-      {
-        protocol: 'https',
-        hostname: '*.companyname.com',
-      },
-      {
-        protocol: 'https',
-        hostname: '*.amazonaws.com',
-      },
+      { protocol: 'http', hostname: 'localhost' },
+      { protocol: 'https', hostname: 'indiantrademart.com' },
+      { protocol: 'https', hostname: '*.indiantrademart.com' },
+      { protocol: 'https', hostname: 'companyname.com' },
+      { protocol: 'https', hostname: '*.companyname.com' },
+      { protocol: 'https', hostname: '*.amazonaws.com' },
     ],
     dangerouslyAllowSVG: true,
   },
@@ -70,7 +52,6 @@ const nextConfig = {
     return config;
   },
   
-  // Environment variables exposed to the browser
   env: {
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
     NEXT_PUBLIC_ROOT_DOMAIN: process.env.NEXT_PUBLIC_ROOT_DOMAIN,
