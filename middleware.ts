@@ -5,7 +5,7 @@ export function middleware(req: NextRequest) {
   const url = req.nextUrl.clone()
 
   // HAR request ko /directory par rewrite karo
-  url.pathname = '/directory'
+  url.pathname = '/vendor'
 
   return NextResponse.rewrite(url)
 }
