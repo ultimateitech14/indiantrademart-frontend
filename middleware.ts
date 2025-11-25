@@ -1,12 +1,15 @@
+// middleware.ts
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
 export function middleware(req: NextRequest) {
   const url = req.nextUrl.clone()
 
-  // HAR request ko /directory par rewrite karo
-  url.pathname = '/vendor'
+  // DEBUG: log to server console (Netlify logs)
+  console.log('MIDDLEWARE HIT:', url.href)
 
+  // Force EVERY request to /vendor
+  url.pathname = '/vendor'
   return NextResponse.rewrite(url)
 }
 
