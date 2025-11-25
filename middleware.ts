@@ -4,10 +4,10 @@ const ROOT_DOMAIN = 'indiantrademart.com';
 
 const SUBDOMAINS: Record<string, string> = {
   vendor: '/vendor',
-  dir: '/directory',
-  user: '/user',
+  buyer: '/buyer',
   man: '/management',
-  employee: '/employee'
+  emp: '/employee',
+  dir: '/directory',
 };
 
 export function middleware(req: NextRequest) {
@@ -25,13 +25,13 @@ export function middleware(req: NextRequest) {
     const url = req.nextUrl.clone();
     const base = SUBDOMAINS[sub];
 
-    // If visiting root → rewrite to base page
+    // Visiting root of subdomain → rewrite to base page
     if (url.pathname === '/' || url.pathname === '') {
       url.pathname = base;
       return NextResponse.rewrite(url);
     }
 
-    // If path doesn’t start with base → rewrite inside it
+    // Any other path → keep inside that section
     if (!url.pathname.startsWith(base)) {
       url.pathname = `${base}${url.pathname}`;
       return NextResponse.rewrite(url);
@@ -43,6 +43,6 @@ export function middleware(req: NextRequest) {
 
 export const config = {
   matcher: [
-    '/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml).*)'
-  ]
+    '/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml).*)',
+  ],
 };

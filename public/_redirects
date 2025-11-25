@@ -1,0 +1,5 @@
+https://vendor.indiantrademart.com/*   /vendor/:splat      200
+https://buyer.indiantrademart.com/*    /buyer/:splat       200
+https://man.indiantrademart.com/*      /management/:splat  200
+https://emp.indiantrademart.com/*      /employee/:splat    200
+https://dir.indiantrademart.com/*      /directory/:splat   200
